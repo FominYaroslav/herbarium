@@ -24,9 +24,11 @@ from django.views.generic import TemplateView
 from search import views
 
 urlpatterns = [
+
     re_path('^index', TemplateView.as_view(template_name= 'index.html')),
     re_path('^color_picker', include('color_picker.urls')),
     re_path(r'^search/', include('search.urls')),
+    re_path(r'^meassurement/', include('distance_meassurement.urls')),
 
     # url(r'^search_result', views.search.as_view(), name='search_result'),
     # url(r'^search', views.home.as_view()),

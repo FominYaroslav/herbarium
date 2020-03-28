@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '37uv5g4+jz5(=9h9_81bg1*17vcpax4$+50y+kj$hg8(k$!6=v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*','localhost:8000']
 
@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'index',
     'color_picker',
-    'search'
+    'search',
+    'distance_meassurement'
+
 ]
 
 MIDDLEWARE = [
