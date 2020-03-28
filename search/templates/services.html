@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{%load static %}
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Virtual Herbarium</title>
+	<link rel="stylesheet" href="{%static 'css/style.css'%}" type="text/css">
+</head>
+<body>
+	<div class="border">
+		<div id="bg">
+			background
+		</div>
+		<div class="page">
+			<div class="sidebar">
+				<a href="/index" id="logo"><img src="{%static 'images/logo1111.png'%}" alt="logo"></a>
+				<ul>
+					<li>
+						<a href="/index">Home</a>
+					</li>
+					<li>
+						<a href="/search">Search</a>
+					</li>
+					<li class="selected">
+						<a href="services.html">Parameters</a>
+					</li>
+					<li>
+						<a href="por.html">Collections</a>
+					</li>
+				
+				</ul>
+				<form action="index.html">
+					<span>Comenius University</span>
+					
+				</form>
+				
+			</div>
+			<div class="body">
+				<div class="services">
+					<h2>Herbarium sample</h2>
+					<ul class="navigation">
+						<li class="selected"></li>
+						<li>
+						<a href="services.html">Metadata</a>
+						</li>
+						<li>
+							<a href="dfdf (2).html">Distance</a>
+						</li>
+						<li>
+							<a href="/color_picker">Color Meassurment</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<h3><span>A page which will open after searching an image</span></h3>
+							<h2>{{plant.name}}</h2>
+							<div>
+								<img src="{{plant.scan.url}}" alt="скан вибраної рослини">
+							</div>
+							<p>
+									Here should be metadata from database.
+								</p>
+							<!--<p>
+								This website template has been designed by <a href="http://www.freewebsitetemplates.com/">Free Website Templates</a> for you, for free. You can replace all this text with your own text.
+							</p>
+							<p>
+								You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
+							</p>
+							<p>
+								If you're having problems editing this website template, then don't hesitate to ask for help on the <a href="http://www.freewebsitetemplates.com/forums/">Forums</a>.
+							</p>-->
+						</li>
+						<li>
+							<!--
+							<h3><span>Web Design</span></h3>
+							<div>
+								<img src="images/web-design.jpg" alt="">
+							</div>
+							-->
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

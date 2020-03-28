@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+
+<head>
+
+<!--	<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}" />-->
+	<link rel="stylesheet" href="{% static "css/style.css" %}"/>
+
+	<meta charset="UTF-8">
+	<title>Virtual Herbarium</title>
+	<!--<link rel="stylesheet" href="css/style.css" type="text/css">  -->
+	
+<script type="text/javascript" src="{%static "scripts/jquery.min.js"%}"></script>
+<script type="text/javascript" src="{%static "scripts/jquery.innerfade.js"%}"></script>
+</head>
+<body>
+	<div class="border">
+		<div id="bg">
+			background
+		</div>
+		<div class="page">
+			<div class="sidebar">
+				<a href="index" id="logo"></a><img src="{% static "images/logo111.png" %}" alt="logo"></a>
+				<ul>
+					<li class="selected">
+						<a href="index">Home</a>
+					</li>
+					<li>
+						<a href="search">Search</a>
+					</li>
+					<li>
+						<a href="services.html">Parameters</a>
+					</li>
+					<li>
+						<a href="por.html">Collection</a>
+					</li>
+					
+				</ul>
+				<form action="about.html">
+					<span>Commenius University</span>
+					<p>Virtual Herbarium Collection</p>
+					<!--
+					<input type="text" onClick="this.value='';" onFocus="this.select()" onBlur="this.value=!this.value?'Enter Valid Email Address':this.value;" value="Enter Valid Email Address">
+					<input type="submit" id="submit" value="submit">-->
+				</form>
+				<!--<div class="connect">
+					<a href="http://freewebsitetemplates.com/go/facebook/" id="facebook">facebook</a> <a href="http://freewebsitetemplates.com/go/twitter/" id="twitter">twitter</a> <a href="http://freewebsitetemplates.com/go/googleplus/" id="googleplus">youtube</a>
+				</div>-->
+				
+
+			</div>
+			<div class="body">
+				<div>
+					<h2>Virtual Herbarium</h2>
+					<p>
+						Comenius University
+
+					</p>
+
+					<div class="fl_left">
+							<h1>What you can find here</h1>
+							<ul>
+							  <li>
+								<h2>1.1
+								</h2>
+								<p>This is an online storage of herbarium samples of Natural Faculty in Bratislava, offering:</p>
+								<p>search of plants by name, species, keywords; </p>
+								<p>distance meassurment of herbarium particles;</p>
+								<p>color picker. </p>
+
+							  </li>
+
+						  </div>
+					<div class="fl_right">
+
+							<ul id="rotation">
+							  <li><a href="#"></a><img src="{%static "images/demo1.png"%}" alt="" /></a></li>
+							  <li><a href="#"></a><img src="{%static "images/demo2.png"%}" alt="" /></a></li>
+							  <li><a href="#"><img     src="{%static "images/demo3.png"%}" alt="" /></a></li>
+							</ul>
+					</div>
+
+						</div>
+
+					
+					<div>
+						<h3><span>What You can find here</span></h3>
+						<p>
+							Katia
+						</p>
+						<ul>
+							<li id="link1">
+								<a href="search"><span>Search</span></a>
+							</li>
+							<li id="link2">
+								<a href="services.html"><span>Collection</span></a>
+							</li>
+							<li id="link3">
+								<a href="services.html"><span>Metadata</span></a>
+							</li>
+						</ul>
+					</div>
+				<!----	<div class="section">
+						<h3><span>Latest Projects</span></h3>
+						<ul>
+							<li>
+								<a href="services.html"><img src="images/template1.jpg" alt=""></a> <span>Project: Web Design</span> <span>Client: Frosty Sweets</span> <a href="services.html">Read Details</a>
+							</li>
+							<li>
+								<a href="services.html"><img src="images/template2.jpg" alt=""></a> <span>Project: Corporate Identity</span> <span>Client: Puppy Love</span> <a href="services.html">Read Details</a>
+							</li>
+							<li>
+								<a href="services.html"><img src="images/template3.jpg" alt=""></a> <span>Project: Advertising Campaign</span> <span>Client: Baby School</span> <a href="services.html">Read Details</a>
+							</li>
+						</ul>
+					</div>
+				-->
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

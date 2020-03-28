@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{%static "css/main.css" rel="stylesheet"%}" type="text/css" />
+    <link rel="stylesheet" href="{%static "css/style.css"%}" type="text/css">
+    <title>Search</title>
+</head>
+<body>
+<div class="page">
+            <div class="sidebar">
+                    <a href="/index" id="logo"><img src="{%static "images/logo1111.png"%}" alt="logo"></a>
+                    <p>
+                        ...
+                    </p>
+                    <ul>
+                        <li class="selected">
+                           <a href="services.html">Back</a>
+                        </li>
+
+                    </ul>
+
+            </div>
+</div>
+
+<form action="{% url 'search_result' %}" method="get" id="search">
+  <input name="q" type="text" placeholder="Search...">
+  <input type="submit" name="" value="Search" />
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru" >
+    <head>
+        <meta charset="utf-8" />
+        <title>Virtual Herbarium</title>
+        <link href="{%static "css/main.css" rel="stylesheet"%}" type="text/css" />
+        <link rel="stylesheet" href="{%static "css/style.css"%}" type="text/css">
+        <script type="text/javascript" src="{%static "js/jquery-1.5.2.min.js"%}"></script>
+        <script type="text/javascript" src="{%static "js/script.js"%}"></script>
+        <script>
+    var url_kek = "{% static 'photos/1.jpg' %}";
+    </script>
+    </head>
+    <body>
+            
+            <div class="page">
+            <div class="sidebar">
+                    <a href="index" id="logo"><img src="{%static "images/logo1111.png"%}" alt="logo"></a>
+                    <p>
+                        ...
+                    </p>
+                    <ul>
+                        <li class="selected">
+                           <a href="services.html">Back</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </div>
+        <div class="container">
+            <div class="column1">
+                <canvas id="panel" width="800" height="800">
+                       
+                </canvas>
+            </div>
+            <div class="column2">
+
+                <div><input type="button" value="Другое изображение" id="swImage" /></div>
+
+                <div>Color</div>
+                <div id="preview"></div>
+                <div>Parameters</div>
+                <div>R: <input type="text" id="rVal" /></div>
+                <div>G: <input type="text" id="gVal" /></div>
+                <div>B: <input type="text" id="bVal" /></div>
+                <div>RGB: <input type="text" id="rgbVal" /></div>
+                <div>RGBA: <input type="text" id="rgbaVal" /></div>
+                <div>HEX: <input type="text" id="hexVal" /></div>
+               
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+            </div>
+    </body>
+</html>

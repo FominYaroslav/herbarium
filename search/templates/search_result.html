@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{%static "css/main.css" rel="stylesheet"%}" type="text/css" />
+    <link rel="stylesheet" href="{%static "css/style.css"%}" type="text/css">
+    <title>Search result</title>
+</head>
+<body>
+
+
+<div class="page">
+            <div class="sidebar">
+                    <a href="/index" id="logo"><img src="{%static "images/logo1111.png"%}" alt="logo"></a>
+                    <p>
+                        ...
+                    </p>
+                    <ul>
+                        <li class="selected">
+                           <a href="search">Back</a>
+                        </li>
+
+                    </ul>
+
+
+
+            </div>
+</div>
+{% if object_list %}
+                        <ul>
+                            {% for plant in object_list %}
+
+                                <li>
+                                    {{ plant.name }}, {{ plant.id_of_plant }} <!--{{plant.scan}} -->
+                                </li>
+                            <img src="{{plant.scan.url}}" >
+                            <a href="/scans/{{plant.scan}}" >Full</a>
+                            <a href="services/{{plant.id_of_plant}}">services {{plant.id_of_plant}}</a>
+<!--                            <img src="{%static '{{plant.scan}}%'}" alt="logo">-->
+<!--                            {{plant.scan}}-->
+
+                            {% endfor %}
+                        </ul>
+{% else %}
+<h1>No result</h1>
+{% endif %}
+</body>
+</html>
