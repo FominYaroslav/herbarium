@@ -17,8 +17,10 @@
 */
     function t(e, l) {
         var t = new FileReader;
+        console.log('T ',t);
         t.onload = function(e) {
             var t = new DataView(e.target.result);
+
             if (65496 != t.getUint16(0, !1)) return l(-2);
             for (var n = t.byteLength, a = 2; a < n;) {
                 if (t.getUint16(a + 2, !1) <= 8) return l(-1);
@@ -39,12 +41,14 @@
             return l(-1)
         }, t.readAsArrayBuffer(e)
     }
+
     document.addEventListener("DOMContentLoaded", function(e) {
         var o, m = document.getElementById("output"),
             a = document.getElementById("info"),
             t = document.getElementById("ref"),
             r = document.getElementById("save"),
             i = (document.getElementById("overlay"), document.getElementById("canvas"));
+            console.log('i', i);
         i.width = parseInt(window.getComputedStyle(i.parentNode, null).getPropertyValue("width"));
         var v = i.getContext("2d"),
             y = [],
@@ -52,6 +56,13 @@
             l = 0,
             s = 0,
             c = new Image;
+//            c.src = document.{{plant.scan.url}};
+            c.src = document.getElementById('loadbutton').src;
+
+
+
+            console.log('c 58 new Image', c);
+            console.log('c src', c.src);
         c.crossOrigin = "anonymous", c.referrerPolicy = "no-referrer", c.style.display = "none", c.onload = function() {
             c.width, c.height, i.style.borderRadius = "0", c.width <= i.parentNode.offsetWidth ? i.width = c.width : i.width = parseInt(window.getComputedStyle(i.parentNode, null).getPropertyValue("width")), i.height = i.width * c.height / c.width, v.drawImage(c, 0, 0, c.width, c.height, 0, 0, i.width, i.height), v.lineWidth = 3, y = [], x(), r.disabled = ""
         }, c.onerror = function(e) {
@@ -59,46 +70,69 @@
             alert("Sorry, this image could not be loaded directly*.\nPlease try copy-paste instead.\n\n*probably due to security measures of the browser and/or server. Also, you can't drop local image files from another browser tab.", e)
         };
         var n = new URLSearchParams(window.location.search);
+        console.log('n 64', n);
         Array.from(n), window.addEventListener("paste", function(e) {
             var t = (e.clipboardData || e.originalEvent.clipboardData).items;
+            console.log(' t68', t);
             for (index in t) {
                 var n = t[index];
+                console.log('n72', n);
                 if ("file" === n.kind) {
                     var a = n.getAsFile(),
                         r = new FileReader;
+                    console.log('a 76', a);
                     r.onload = function(e) {
+                        console.log('r78', r);
+                        console.log('c79', c);
                         c.src = e.target.result
+                        console.log('c81', c);
                     }, r.readAsDataURL(a)
                 } else "string" === n.kind && n.getAsString(function(e) {
                     b(e) && (c.src = e)
                 })
             }
         }), document.getElementById("loadbutton").onclick = function() {
+
             var n = document.createElement("input");
+            console.log('n89', n);
             n.type = "file", n.accept = ".jpg, .jpeg, .png", n.addEventListener("change", function() {
                 var e = n.files;
+                console.log('e92',e);
                 if (0 === e.length);
                 else
                     for (var t = 0; t < e.length; t++) f(e[t]) && (c.src = window.URL.createObjectURL(e[t]))
+                    console.log('c96 c src', c, '  ', c.src);
             }),
+            console.log('n', n);
+            console.log("c99 csrc", c, ' ' , c.src);
+            console.log("e", e);
 
             n.click()
+
         },
          document.body.ondragover = function(e) {
             e.preventDefault()
+            console.log(e)
         },
          document.body.ondrop = function(e) {
             if (e.stopPropagation(), e.preventDefault(), e.dataTransfer.items, e.dataTransfer.types, e.dataTransfer.files.length, e.dataTransfer.getData("text"), e.dataTransfer.files.length)
                 for (var t, n = e.dataTransfer.files, a = 0; t = n[a]; a++)
                     if ("file" + a + ":" + t.name + t.type || (t.size, t.lastModified), t.type.match("image.*")) {
                         var r = new FileReader;
+
                         r.onload = function(e) {
-                            c.src = e.target.result
+                               console.log('r 116', r);
+                            c.src = e.target.result;
+                            console.log("c 116", c, ' ', c.src);
+                            console.log("t", t);
+
                         }, r.readAsDataURL(t)
                     } else t.type;
             else {
                 var o = e.dataTransfer.getData("text");
+                console.log('o',o);
                 b(o) && (c.src, c.src = o)
+                console.log('e',e);
             }
         }, window.addEventListener("keydown", function(e) {
             e.repeat || "Escape" != e.key || (c.src = "", i.width = parseInt(window.getComputedStyle(i.parentNode, null).getPropertyValue("width")), i.height = 150, w(), x())
@@ -127,6 +161,7 @@
                     v.strokeStyle = "rgba(255, 255, 255, 0.5)", v.strokeText(c, Math.min(y[i].x1, y[i].x2) + Math.abs(y[i].x1 - y[i].x2) / 2, Math.min(y[i].y1, y[i].y2) + Math.abs(y[i].y1 - y[i].y2) / 2), v.fillStyle = "rgba(0, 0, 0, 1)", v.fillText(c, Math.min(y[i].x1, y[i].x2) + Math.abs(y[i].x1 - y[i].x2) / 2, Math.min(y[i].y1, y[i].y2) + Math.abs(y[i].y1 - y[i].y2) / 2), s = l.insertCell();
                     var u = document.createElement("a"),
                         p = document.createTextNode("remove");
+
                     u.appendChild(p), u.href = "", u.onclick = function(e) {
                         return function() {
                             return y.splice(e, 1), w(), x(), !1
@@ -136,6 +171,7 @@
                 var h = o.createTHead().insertRow(),
                     g = document.createTextNode("#"),
                     f = document.createElement("th");
+
                 f.appendChild(g), h.appendChild(f), g = document.createTextNode("length"), (f = document.createElement("th")).appendChild(g), h.appendChild(f), g = document.createTextNode("-"), (f = document.createElement("th")).appendChild(g), h.appendChild(f), m.appendChild(o)
             } else m.innerHTML = ""
         }
@@ -153,6 +189,7 @@
             }, o = i.getBoundingClientRect(), l = e.clientX - o.left, s = e.clientY - o.top, void(d = !0))
         }), i.addEventListener("mousemove", function(e) {
             o = i.getBoundingClientRect();
+
             var t = e.clientX - o.left,
                 n = e.clientY - o.top,
                 a = v.getImageData(t, n, 1, 1).data,
@@ -170,7 +207,9 @@
                 y2: n
             }), x())
         }), i.addEventListener("mouseout", function(e) {
+
             e.stopPropagation(), e.preventDefault(), p("-", "-", "-")
+
         }), t.addEventListener("input", function(e) {
             w(), x()
         });

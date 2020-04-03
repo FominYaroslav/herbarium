@@ -33,3 +33,5 @@ def services(request, plant_id):
 
     return render(request, 'services.html',{'plant':plant})
 
+
+

@@ -3,7 +3,6 @@ var ctx;
 //{%load static %}
 
 
-
 var images = [ // собираем массив изображения
 
     'images/pic1.jpg',
@@ -26,7 +25,7 @@ $(function(){
         ctx.drawImage(image, 0, 0, image.width, image.height); // создаём канву
     }
     image.crossOrigin = '';    
-    image.src = 'https://media.mnn.com/assets/images/2015/08/union-wood-sunrise.jpg.653x0_q80_crop-smart.jpg';
+    image.src = 'http//: якаст ссилка на картинку';
     console.log(image.src)
 
     // создаём объект
@@ -63,10 +62,10 @@ $(function(){
         $('#hexVal').val( '#' + dColor.toString(16) );
     }); 
 
-    $('#swImage').click(function(e) { // переключение изображений
-        iActiveImage++;
-        if (iActiveImage >= 10) iActiveImage = 0;
-//        image.src = "https://www.wikihow.com/images_en/thumb/f/fc/Get-the-URL-for-Pictures-Step-1-Version-6.jpg/v4-728px-Get-the-URL-for-Pictures-Step-1-Version-6.jpg.webp";
-        image.src = 'https://media.mnn.com/assets/images/2015/08/union-wood-sunrise.jpg.653x0_q80_crop-smart.jpg'
-    });
+//    $('#swImage').click(function(e) { // переключение изображений
+//        iActiveImage++;
+//        if (iActiveImage >= 10) iActiveImage = 0;
+////        image.src = "https://www.wikihow.com/images_en/thumb/f/fc/Get-the-URL-for-Pictures-Step-1-Version-6.jpg/v4-728px-Get-the-URL-for-Pictures-Step-1-Version-6.jpg.webp";
+////        image.src = 'https://media.mnn.com/assets/images/2015/08/union-wood-sunrise.jpg.653x0_q80_crop-smart.jpg'
+//    });
 });

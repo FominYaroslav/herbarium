@@ -268,13 +268,13 @@
 
                 <div class="page">
                         <div class="sidebar">
-                                <a href="index.html" id="logo"><img src={% static "images/logo1111.png" %} alt="logo"></a>
+                                <a href="/index" id="logo"><img src={% static "images/logo1111.png" %} alt="logo"></a>
                                 <p>
                                     ...
                                 </p>
                                 <ul>
                                     <li class="selected">
-                                       <a href="services.html">Back</a>
+                                       <a href="/search/services/{{plant.id_of_plant}}">Back</a>
                                     </li>
 
                                 </ul>
@@ -289,7 +289,8 @@
 
             <ol>
                 <li>
-                    <input id=loadbutton type=button value="Open ...">
+                    <input id=loadbutton type='reset' value="Open ..." src = {{plant.scan.url}}>
+<!--                        <img id = 'loadbutton' src = 'http://localhost:8000/scans/Start_E55E2vw.jpg' />-->
 
             <input id=ref value=1>
             <ul>
@@ -298,7 +299,8 @@
                             <li>Hit <kbd>ESC</kbd> to clear</ul>
             <div id=fileinfo></div>
             <div id=container>
-                <canvas id=canvas></canvas>
+                <canvas id=canvas> </canvas>
+
             </div>
             <div id=info>x=- y=- -</div>
             <input id=save type=button disabled value="Save as ...">
