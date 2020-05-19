@@ -10,7 +10,8 @@ urlpatterns = [
 
     re_path(r'search_result',views.search.as_view(), name='search_result'),
     # url(r'services/(?P<plant_id>\D+)', views.services),
-    path(r'services/<str:plant_id>', views.services),
+    path(r'services/<str:barcode>', views.services),
+    path("collections", views.collections.as_view()),
     re_path(r'^$',views.home.as_view())
 
 

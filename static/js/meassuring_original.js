@@ -15,8 +15,6 @@
         return /^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/.test(e)
     }
 */
-
-//
     function t(e, l) {
         var t = new FileReader;
         console.log('T ',t);
@@ -52,7 +50,6 @@
             i = (document.getElementById("overlay"), document.getElementById("canvas"));
             console.log('i', i);
         i.width = parseInt(window.getComputedStyle(i.parentNode, null).getPropertyValue("width"));
-
         var v = i.getContext("2d"),
             y = [],
             d = !1,
@@ -60,18 +57,15 @@
             s = 0,
             c = new Image;
 //            c.src = document.{{plant.scan.url}};
-//            c.src = document.getElementById('loadbutton').src;
-            c.src = crcr
+            c.src = document.getElementById('loadbutton').src;
+
 
 
             console.log('c 58 new Image', c);
             console.log('c src', c.src);
         c.crossOrigin = "anonymous", c.referrerPolicy = "no-referrer", c.style.display = "none", c.onload = function() {
-//            c.sh, c.height, i.style.borderRadius = "0", c.width <= i.parentNode.offsetWidth ? i.width = c.width : i.width = parseInt(window.getComputedStyle(i.parentNode, null).getPropertyValue("width")), i.height = i.width * c.height / c.width, v.drawImage(c, 0, 0, c.width, c.height, 0, 0, i.width, i.height), v.lineWidth = 3, y = [], x(), r.disabled = ""
-            c.width, c.height, i.style.borderRadius = "0", c.width <= i.parentNode.offsetWidth ? i.width = c.width : i.width = c.width*0.7, i.height =  c.height*0.7 , v.drawImage(c, 0, 0, c.width, c.height, 0, 0, c.width*0.7, c.height*0.7), v.lineWidth = 3, y = [], x(), r.disabled = ""
-
+            c.width, c.height, i.style.borderRadius = "0", c.width <= i.parentNode.offsetWidth ? i.width = c.width : i.width = parseInt(window.getComputedStyle(i.parentNode, null).getPropertyValue("width")), i.height = i.width * c.height / c.width, v.drawImage(c, 0, 0, c.width, c.height, 0, 0, i.width, i.height), v.lineWidth = 3, y = [], x(), r.disabled = ""
         }, c.onerror = function(e) {
-            alert(c);
             if ("" == c.currentSrc) return !1;
             alert("Sorry, this image could not be loaded directly*.\nPlease try copy-paste instead.\n\n*probably due to security measures of the browser and/or server. Also, you can't drop local image files from another browser tab.", e)
         };
@@ -97,26 +91,25 @@
                     b(e) && (c.src = e)
                 })
             }
-        }),
-//         document.getElementById('logo').onclick = function() {
-////шляпа шляпна
-//            var n = document.createElement("input");
-//            console.log('n89', n);
-//            n.type = "file", n.accept = ".jpg, .jpeg, .png", n.addEventListener("change", function() {
-//                var e = n.files;
-//                console.log('e92',e);
-//                if (0 === e.length);
-//                else
-//                    for (var t = 0; t < e.length; t++) f(e[t]) && (c.src = window.URL.createObjectURL(e[t]))
-//                    console.log('c96 c src', c, '  ', c.src);
-//            }),
-//            console.log('n', n);
-//            console.log("c99 csrc", c, ' ' , c.src);
-//            console.log("e", e);
-//
-//            n.click()
-//
-//        },
+        }), document.getElementById("loadbutton").onclick = function() {
+
+            var n = document.createElement("input");
+            console.log('n89', n);
+            n.type = "file", n.accept = ".jpg, .jpeg, .png", n.addEventListener("change", function() {
+                var e = n.files;
+                console.log('e92',e);
+                if (0 === e.length);
+                else
+                    for (var t = 0; t < e.length; t++) f(e[t]) && (c.src = window.URL.createObjectURL(e[t]))
+                    console.log('c96 c src', c, '  ', c.src);
+            }),
+            console.log('n', n);
+            console.log("c99 csrc", c, ' ' , c.src);
+            console.log("e", e);
+
+            n.click()
+
+        },
          document.body.ondragover = function(e) {
             e.preventDefault()
             console.log(e)
@@ -152,27 +145,17 @@
         }
 
         function x() {
-//            var e = document.getElementById("ref").value.match(/(\d+(,|\.)?\d*)(\D*)/),
-              var e = document.getElementById("ref").value.match(/(\d+(,|\.)?\d*)(\D*)/),
-
+            var e = document.getElementById("ref").value.match(/(\d+(,|\.)?\d*)(\D*)/),
                 t = "",
                 n = "";
-              console.log('e149', e);
-//              console.log('e149', e[1], e[2], e[3]);
             null == e || (t = e[1], n = e[3]);
             var a = parseFloat(t.replace(",", ".")),
                 r = 1;
-
-                console.log('a 158', a);
-                console.log('r158', r);
             if (y.length) {
-//                r = 1 / Math.sqrt(Math.pow(y[0].x1 - y[0].x2, 2) + Math.pow(y[0].y1 - y[0].y2, 2)) * a, m.innerHTML = "";
-                  r = 1, m.innerHTML = ""; //скільки сантиметрів в одному пікселі
-                console.log('r1162', r)
+                r = 1 / Math.sqrt(Math.pow(y[0].x1 - y[0].x2, 2) + Math.pow(y[0].y1 - y[0].y2, 2)) * a, m.innerHTML = "";
                 for (var o = document.createElement("table"), i = 0; i < y.length; i++) {
                     var d, l = o.insertRow(),
                         s = l.insertCell();
-                        console.log('d166', d);
                     s.appendChild(document.createTextNode(i + 1)), r ? d = Math.sqrt(Math.pow(y[i].x1 - y[i].x2, 2) + Math.pow(y[i].y1 - y[i].y2, 2)) * r : (d = Math.sqrt(Math.pow(y[i].x1 - y[i].x2, 2) + Math.pow(y[i].y1 - y[i].y2, 2)), n = " px"), (s = l.insertCell()).appendChild(document.createTextNode(d.toFixed(2) + n)), v.font = "20px serif", v.textAlign = "center", v.textBaseline = "middle";
                     var c = i + 1 + "=" + d.toFixed(2) + n;
                     v.strokeStyle = "rgba(255, 255, 255, 0.5)", v.strokeText(c, Math.min(y[i].x1, y[i].x2) + Math.abs(y[i].x1 - y[i].x2) / 2, Math.min(y[i].y1, y[i].y2) + Math.abs(y[i].y1 - y[i].y2) / 2), v.fillStyle = "rgba(0, 0, 0, 1)", v.fillText(c, Math.min(y[i].x1, y[i].x2) + Math.abs(y[i].x1 - y[i].x2) / 2, Math.min(y[i].y1, y[i].y2) + Math.abs(y[i].y1 - y[i].y2) / 2), s = l.insertCell();

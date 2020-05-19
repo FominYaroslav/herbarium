@@ -25,6 +25,8 @@ SECRET_KEY = '37uv5g4+jz5(=9h9_81bg1*17vcpax4$+50y+kj$hg8(k$!6=v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+TEMPLATE_DEBUG = True
+THUMBNAIL_DEBUG = True
 
 ALLOWED_HOSTS = ['*','localhost:8000']
 
@@ -41,7 +43,9 @@ INSTALLED_APPS = [
     'index',
     'color_picker',
     'search',
-    'distance_meassurement'
+    'distance_meassurement',
+    'sorl.thumbnail',
+
 
 ]
 
@@ -130,3 +134,7 @@ STATICFILES_DIRS = [
 ]
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'scans')
 MEDIA_URL = '/scans/'
+# iipimage
+#IMAGE_SERVER_URL =
+#IMAGE_SERVER_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'scans')
+# ------

@@ -4,23 +4,24 @@
     <head>
         <meta charset="utf-8" />
         <title>Virtual Herbarium</title>
+        <script>var crcr = '{{plant.scan.url}}' </script>
         <link href="{%static "css/main.css" rel="stylesheet"%}" type="text/css" />
         <link rel="stylesheet" href="{%static "css/style.css"%}" type="text/css">
         <script type="text/javascript" src="{%static "js/jquery-1.5.2.min.js"%}"></script>
         <script type="text/javascript" src="{%static "js/script.js"%}"></script>
-        <script>    </script>
+
     </head>
     <body>
             
             <div class="page">
             <div class="sidebar">
-                    <a href="index" id="logo"><img src="{%static "images/logo1111.png"%}" alt="logo"></a>
+                    <a href="/index" id="logo"><img src="{%static "images/logo1111.png"%}" alt="logo"></a>
                     <p>
                         ...
                     </p>
                     <ul>
                         <li class="selected">
-                           <a href="services.html">Back</a>
+                           <a href="/search/services/{{plant.barcode}}">Back</a>
                         </li>
                         
                     </ul>
@@ -28,7 +29,7 @@
                 </div>
         <div class="container">
             <div class="column1">
-                <canvas id="panel" width="800" height="800">
+                <canvas id="panel" width="1200" height="1400">
 
                 </canvas>
             </div>

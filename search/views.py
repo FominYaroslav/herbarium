@@ -7,9 +7,14 @@ class search(ListView):
     model = Plant
     template_name ='search_result.html'
     def get_queryset(self):
-        query = self.request.GET.get('q')
+        taxon_get = self.request.GET.get('taxon')
+        country_get = self.request.GET.get('country')
+        barcode_get = self.request.GET.get('barcode')
+
+
         return Plant.objects.filter(
-            Q(name__icontains= query) | Q(id_of_plant__icontains = query)
+            Q(country__icontains = country_get) & Q(taxon__icontains= taxon_get) & Q(barcode__icontains = barcode_get)
+
         )
 # Create your views here.
 
@@ -26,12 +31,19 @@ class home(TemplateView):
 #         plant_id='mini'
 #         plant= Plant.objects.get(Q(id_of_plant__icontains = plant_id))
 #         return render(request, self.template_name, {'plant':plant})
-def services(request, plant_id):
-    print('sdsd:',plant_id)
-    #plant_id='mini'
-    plant = Plant.objects.get(Q(id_of_plant__icontains=plant_id))
+def services(request, barcode):
+    print('sdsd:',barcode)
+    #     plant = list(Plant.objects.get(Q(id_of_plant__icontains=plant_id)))
+
+    plant = Plant.objects.get(barcode=barcode)
 
     return render(request, 'services.html',{'plant':plant})
+
+class collections(ListView):
+    model = Plant
+    template_name = 'collections.html'
+
+
 
 
 

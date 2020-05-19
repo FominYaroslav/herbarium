@@ -76,9 +76,15 @@
 					<div class="fl_right">
 
 							<ul id="rotation">
-							  <li><a href="#"></a><img src="{%static "images/demo1.png"%}" alt="" /></a></li>
-							  <li><a href="#"></a><img src="{%static "images/demo2.png"%}" alt="" /></a></li>
-							  <li><a href="#"><img     src="{%static "images/demo3.png"%}" alt="" /></a></li>
+<!--							  <li><a href="#"></a><img src="{%static "images/demo1.png"%}" alt="" /></a></li>-->
+<!--							  <li><a href="#"></a><img src="{%static "images/demo2.png"%}" alt="" /></a></li>-->
+<!--							  <li><a href="#"><img     src="{%static "images/demo3.png"%}" alt="" /></a></li>-->
+									{% for scan in plants %}
+										<li><a href ="a"><img src = "{{scan}}" alt = "Скан рослини " /></a></li>
+									{%endfor %}
+
+
+
 							</ul>
 					</div>
 

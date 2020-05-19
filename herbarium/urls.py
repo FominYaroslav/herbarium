@@ -25,8 +25,9 @@ from search import views
 
 urlpatterns = [
 
-    re_path('^index', TemplateView.as_view(template_name= 'index.html')),
-    re_path('^color_picker', include('color_picker.urls')),
+    # re_path('^index', TemplateView.as_view(template_name= 'index.html')),
+    re_path('^index', include('index.urls')),
+    re_path('^color_picker/', include('color_picker.urls')) ,
     re_path(r'^search/', include('search.urls')),
     re_path(r'^meassurement/', include('distance_meassurement.urls')),
 
@@ -34,6 +35,7 @@ urlpatterns = [
     # url(r'^search', views.home.as_view()),
 
     path('admin/', admin.site.urls),
+    re_path('^$',include('index.urls'))
 ]
 
 if settings.DEBUG:

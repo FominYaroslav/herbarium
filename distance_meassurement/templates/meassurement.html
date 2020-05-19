@@ -259,8 +259,12 @@
 <!--    })-->
 <!--</script>-->
 <head>
+
         <link href="{%static "css/main.css" rel="stylesheet"%}" type="text/css" />
         <link rel="stylesheet" href="{%static "css/style.css"%}" type="text/css">
+<!--        <script type="text/javascript" src="{%static "js/vare.js"%}"></script>-->
+        <script type="text/javascript">let crcr = '{{plant.scan.url}}';</script>
+
         <script type="text/javascript" src="{%static "js/meassuring.js"%}"></script>
 
 </head>
@@ -274,7 +278,7 @@
                                 </p>
                                 <ul>
                                     <li class="selected">
-                                       <a href="/search/services/{{plant.id_of_plant}}">Back</a>
+                                       <a href="/search/services/{{plant.barcode}}">Back</a>
                                     </li>
 
                                 </ul>
@@ -284,12 +288,14 @@
     </div>
 </div>
 <div class=container>
+
         <div>
         <h1>Distance meassurement</h1>
 
             <ol>
                 <li>
-                    <input id=loadbutton type='reset' value="Open ..." src = {{plant.scan.url}}>
+<!--                    <input id=loadbutton type='reset' value="Open ..." src = {{plant.scan.url}}>-->
+
 <!--                        <img id = 'loadbutton' src = 'http://localhost:8000/scans/Start_E55E2vw.jpg' />-->
 
             <input id=ref value=1>
@@ -299,6 +305,7 @@
                             <li>Hit <kbd>ESC</kbd> to clear</ul>
             <div id=fileinfo></div>
             <div id=container>
+
                 <canvas id=canvas> </canvas>
 
             </div>

@@ -15,48 +15,6 @@ a img {
 	border:0;
 	display:block;
 }
-.body .button{
-	float: left;
-	margin-left: -311px;
-	margin-top: 350px;
-	align-items: center;
-	background-color: #045866;
-	border: none;
-  	color: white;
-  	padding: 15px 32px;
-  	text-align: center;
-  	font-size: 16px;
-}
-.body .frm_left
-{
-	display:block; 
-	float: left; 
-	margin-left: 275px;
-	width:200px; 
-	height:500px;
-}
-.body .frm_right
-{
-	display:block; 
-	float: left; 
-	width:200px; 
-	height:500px; 
-}
-.body .frm
-{
-	display:block; 
-	float: left; 
-	width:1030px; 
-	height:500px; 
-	padding:0px; 
-	align-content: center;
-	align-items: center;
-	margin-right: 50px;
-	/*background-color: #eceaea;*/
-	border: #cfcfcf;
-	border-style: solid;
-	border-width: 2px;
-}
 /*sam block*/
 .body .fl_right{
 	display:block; 
@@ -132,7 +90,6 @@ a img {
 	font-style: normal;
 }
 /*------------------------- Header ------------------------*/
-
 .sidebar {
 	width:10%;
 	float:left;
@@ -341,53 +298,7 @@ a img {
 .body .fl_right  ul{
 	list-style: none;
 }
-/*блок с увеличением*/
-.image_zoom{
-     z-index: 1;
 
-    width:auto;
-    height:auto;
-    background:transparent;
-    display: block;
-    opacity: 1;
-    -webkit-transform: scale(1,1);
-    -webkit-transition-timing-function: ease-out;
-    -webkit-transition-duration: 550ms;
-    -moz-transform: scale(1,1);
-    -moz-transition-timing-function: ease-out;
-    -moz-transition-duration: 550ms;
-}
-.image_zoom:hover {
-     z-index: 999;
-     position: relative;
-    -webkit-transform: scale(2,2);
-    -webkit-transition-timing-function: ease-out;
-    -webkit-transition-duration: 550ms;
-    -moz-transform: scale(2,2);
-    -moz-transition-timing-function: ease-out;
-    -moz-transition-duration: 550ms;
-}
-.flex_center {
-
-display: flex;
-justify-content: center;
-align-items: center;
-flex-wrap: wrap;}
-/*
-.image_zoom{
-width: auto;
-height: auto;
-background:#390;
--webkit-transition: all 2s ease;
--moz-transition: all 2s ease;
--ms-transition: all 2s ease;
--o-transition: all 2s ease;
-transition: all 2s ease;
-}
-.image_zoom:hover {
-width: auto*1.5;
-height: auto*1.5;
-}*/
 /*
 .body div div ul {
 	margin:0;

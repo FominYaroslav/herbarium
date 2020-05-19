@@ -3,29 +3,29 @@ var ctx;
 //{%load static %}
 
 
-var images = [ // собираем массив изображения
-
-    'images/pic1.jpg',
-    'images/pic2.jpg',
-    'images/pic3.jpg',
-    'images/pic4.jpg',
-    'images/pic5.jpg',
-    'images/pic6.jpg',
-    'images/pic7.jpg',
-    'images/pic8.jpg',
-    'images/pic9.jpg',
-    'images/pic10.jpg'
-];
+//var images = [ // собираем массив изображения
+//
+//    'images/pic1.jpg',
+//    'images/pic2.jpg',
+//    'images/pic3.jpg',
+//    'images/pic4.jpg',
+//    'images/pic5.jpg',
+//    'images/pic6.jpg',
+//    'images/pic7.jpg',
+//    'images/pic8.jpg',
+//    'images/pic9.jpg',
+//    'images/pic10.jpg'
+//];
 var iActiveImage = 0;
 $(function(){
 
     // рисуем активное изображение
     var image = new Image();
     image.onload = function () {
-        ctx.drawImage(image, 0, 0, image.width, image.height); // создаём канву
+        ctx.drawImage(image, 0, 0, image.width*0.1, image.height*0.1); // создаём канву
     }
     image.crossOrigin = '';    
-    image.src = 'http//: якаст ссилка на картинку';
+    image.src = crcr;
     console.log(image.src)
 
     // создаём объект

@@ -4,6 +4,6 @@ from . import views
 
 
 urlpatterns = [
-    path(r'<str:plant_id>', views.meassurement),
-    url(r'',views.meassurement),
+    path(r'<str:barcode>', views.meassurement),
+
 ]

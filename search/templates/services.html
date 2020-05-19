@@ -45,22 +45,29 @@
 						<a href="services.html">Metadata</a>
 						</li>
 						<li>
-							<a href="/meassurement/{{plant.id_of_plant}}">Distance</a>
+							<a href="/meassurement/{{plant.barcode}}">Distance</a>
 						</li>
 						<li>
-							<a href="/color_picker">Color Meassurment</a>
+							<a href="/color_picker/{{plant.barcode}}">Color Meassurment</a>
 						</li>
 					</ul>
 					<ul>
 						<li>
 							<h3><span>A page which will open after searching an image</span></h3>
-							<h2>{{plant.name}}</h2>
+							<h2>{{plant.taxon}}</h2>
 							<div>
-								<img src="{{plant.scan.url}}" alt="скан вибраної рослини">
+<!--								<img src="{{plant.scan.url}}" alt="скан вибраної рослини" width="400" height="700">-->
+								{% load thumbnail %}
+                            {% thumbnail plant.scan "300x100" as im %}
+                                 <a href="{{ plant.scan.url }}">
+                                    <img src="{{im.url }}" >
+                                 </a>
+                            {% endthumbnail %}
 							</div>
-							<p>
-									Here should be metadata from database.
-								</p>
+							<p>	Here should be metadata from database.</p>
+							<h3>Name of plant: {{plant.taxon}}</h3>
+							<h3>Country: {{plant.country}}</h3>
+
 							<!--<p>
 								This website template has been designed by <a href="http://www.freewebsitetemplates.com/">Free Website Templates</a> for you, for free. You can replace all this text with your own text.
 							</p>
