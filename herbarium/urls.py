@@ -19,13 +19,15 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import  settings
 from django.views.static import serve
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
-from search import views
+from search import models
 
 urlpatterns = [
 
-    # re_path('^index', TemplateView.as_view(template_name= 'index.html')),
+    re_path('collections', ListView.as_view(model=models.Plant, paginate_by = 12,template_name= 'collections.html')),
+    # re_path('collections', ListView.as_view()),
+
     re_path('^index', include('index.urls')),
     re_path('^color_picker/', include('color_picker.urls')) ,
     re_path(r'^search/', include('search.urls')),

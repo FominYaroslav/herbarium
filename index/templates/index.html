@@ -30,11 +30,9 @@
 					<li>
 						<a href="search">Search</a>
 					</li>
+
 					<li>
-						<a href="services.html">Parameters</a>
-					</li>
-					<li>
-						<a href="por.html">Collection</a>
+						<a href="/collections">Collection</a>
 					</li>
 					
 				</ul>
@@ -76,12 +74,21 @@
 					<div class="fl_right">
 
 							<ul id="rotation">
+								{% load thumbnail %}
 <!--							  <li><a href="#"></a><img src="{%static "images/demo1.png"%}" alt="" /></a></li>-->
 <!--							  <li><a href="#"></a><img src="{%static "images/demo2.png"%}" alt="" /></a></li>-->
 <!--							  <li><a href="#"><img     src="{%static "images/demo3.png"%}" alt="" /></a></li>-->
-									{% for scan in plants %}
-										<li><a href ="a"><img src = "{{scan}}" alt = "Скан рослини " /></a></li>
-									{%endfor %}
+<!--									{% for scan in plants %}-->
+
+<!--										<li><a href ="a"><img src = "{{scan}}" alt = "Скан рослини " /></a></li>-->
+								{% for plant in plants %}
+										 {% thumbnail plant.scan "200" as im %}
+                                					 <a href="{{ plant.scan.url }}">
+                                    				<img src="{{im.url }}" >
+                                					 </a>
+                            {% endthumbnail %}
+<!--										{%endfor %}-->
+								{%endfor %}
 
 
 
@@ -90,39 +97,9 @@
 
 						</div>
 
-					
-					<div>
-						<h3><span>What You can find here</span></h3>
-						<p>
-							Katia
-						</p>
-						<ul>
-							<li id="link1">
-								<a href="search"><span>Search</span></a>
-							</li>
-							<li id="link2">
-								<a href="services.html"><span>Collection</span></a>
-							</li>
-							<li id="link3">
-								<a href="services.html"><span>Metadata</span></a>
-							</li>
-						</ul>
-					</div>
-				<!----	<div class="section">
-						<h3><span>Latest Projects</span></h3>
-						<ul>
-							<li>
-								<a href="services.html"><img src="images/template1.jpg" alt=""></a> <span>Project: Web Design</span> <span>Client: Frosty Sweets</span> <a href="services.html">Read Details</a>
-							</li>
-							<li>
-								<a href="services.html"><img src="images/template2.jpg" alt=""></a> <span>Project: Corporate Identity</span> <span>Client: Puppy Love</span> <a href="services.html">Read Details</a>
-							</li>
-							<li>
-								<a href="services.html"><img src="images/template3.jpg" alt=""></a> <span>Project: Advertising Campaign</span> <span>Client: Baby School</span> <a href="services.html">Read Details</a>
-							</li>
-						</ul>
-					</div>
-				-->
+
+
+
 				</div>
 			</div>
 		</div>

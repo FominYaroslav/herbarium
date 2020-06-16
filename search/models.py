@@ -1,5 +1,7 @@
 from django.db import models
 import datetime
+from django.db.models.signals import post_save, pre_save
+from django.dispatch import receiver
 
 countries = (('Slovensko','Slovakia'),('Cesko','Czechia'),('Rakusko','Austria'),('Polsko', 'Poland'))
 
@@ -15,6 +17,14 @@ class Plant(models.Model):
     scan = models.ImageField()
 
     def __str__(self):
-        return self.taxon
+        return (self.taxon + ', barcode: ' + self.barcode)
 
-# Create your models here.
+
+
+@receiver(post_save, sender = Plant, )
+def printer(instance, **kwargs):
+    print('\n {} has created'.format(str(instance)))
+    print(datetime.time())
+
+
+
