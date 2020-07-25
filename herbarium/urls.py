@@ -20,11 +20,17 @@ from django.contrib import admin
 from django.conf import  settings
 from django.views.static import serve
 from django.views.generic import TemplateView, ListView
-
+from rest_framework import routers
+from api import views
 from search import models
 
-urlpatterns = [
+router = routers.DefaultRouter()
+router.register(r'plants', views.PlantsViewSet)
 
+urlpatterns = [
+    path('api', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # sdsd
     re_path('collections', ListView.as_view(model=models.Plant, paginate_by = 12,template_name= 'collections.html')),
     # re_path('collections', ListView.as_view()),
 

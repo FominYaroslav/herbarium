@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'search',
     'distance_meassurement',
     'sorl.thumbnail',
+    'rest_framework',
+    # 'rest_framework-xml',
 
 
 ]
@@ -138,3 +140,14 @@ MEDIA_URL = '/scans/'
 #IMAGE_SERVER_URL =
 #IMAGE_SERVER_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'scans')
 # ------
+
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework_xml.parsers.XMLParser',
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework_xml.renderers.XMLRenderer',
+    ),
+}

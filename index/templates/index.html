@@ -39,13 +39,9 @@
 				<form action="about.html">
 					<span>Commenius University</span>
 					<p>Virtual Herbarium Collection</p>
-					<!--
-					<input type="text" onClick="this.value='';" onFocus="this.select()" onBlur="this.value=!this.value?'Enter Valid Email Address':this.value;" value="Enter Valid Email Address">
-					<input type="submit" id="submit" value="submit">-->
+
 				</form>
-				<!--<div class="connect">
-					<a href="http://freewebsitetemplates.com/go/facebook/" id="facebook">facebook</a> <a href="http://freewebsitetemplates.com/go/twitter/" id="twitter">twitter</a> <a href="http://freewebsitetemplates.com/go/googleplus/" id="googleplus">youtube</a>
-				</div>-->
+
 				
 
 			</div>
@@ -75,19 +71,14 @@
 
 							<ul id="rotation">
 								{% load thumbnail %}
-<!--							  <li><a href="#"></a><img src="{%static "images/demo1.png"%}" alt="" /></a></li>-->
-<!--							  <li><a href="#"></a><img src="{%static "images/demo2.png"%}" alt="" /></a></li>-->
-<!--							  <li><a href="#"><img     src="{%static "images/demo3.png"%}" alt="" /></a></li>-->
-<!--									{% for scan in plants %}-->
 
-<!--										<li><a href ="a"><img src = "{{scan}}" alt = "Скан рослини " /></a></li>-->
 								{% for plant in plants %}
-										 {% thumbnail plant.scan "200" as im %}
+										 {% thumbnail plant.scan "400" as im %}
                                 					 <a href="{{ plant.scan.url }}">
                                     				<img src="{{im.url }}" >
                                 					 </a>
                             {% endthumbnail %}
-<!--										{%endfor %}-->
+
 								{%endfor %}
 
 
