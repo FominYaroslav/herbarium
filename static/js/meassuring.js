@@ -49,7 +49,7 @@
             a = document.getElementById("info"),
             t = document.getElementById("ref"),
             r = document.getElementById("save"),
-            i = (document.getElementById("overlay"), document.getElementById("canvas"));
+            i = (document.getElementById("overlay"), document.getElementById("panel"));
             console.log('i', i);
         i.width = parseInt(window.getComputedStyle(i.parentNode, null).getPropertyValue("width"));
 
@@ -68,7 +68,7 @@
             console.log('c src', c.src);
         c.crossOrigin = "anonymous", c.referrerPolicy = "no-referrer", c.style.display = "none", c.onload = function() {
 //            c.sh, c.height, i.style.borderRadius = "0", c.width <= i.parentNode.offsetWidth ? i.width = c.width : i.width = parseInt(window.getComputedStyle(i.parentNode, null).getPropertyValue("width")), i.height = i.width * c.height / c.width, v.drawImage(c, 0, 0, c.width, c.height, 0, 0, i.width, i.height), v.lineWidth = 3, y = [], x(), r.disabled = ""
-            c.width, c.height, i.style.borderRadius = "0", c.width <= i.parentNode.offsetWidth ? i.width = c.width : i.width = c.width*0.7, i.height =  c.height*0.7 , v.drawImage(c, 0, 0, c.width, c.height, 0, 0, c.width*0.7, c.height*0.7), v.lineWidth = 3, y = [], x(), r.disabled = ""
+            c.width, c.height, i.style.borderRadius = "0", c.width <= i.parentNode.offsetWidth ? i.width = c.width : i.width = c.width*0.2, i.height =  c.height*0.2 , v.drawImage(c, 0, 0, c.width, c.height, 0, 0, c.width*0.2, c.height*0.2), v.lineWidth = 2, y = [], x(), r.disabled = ""
 
         }, c.onerror = function(e) {
             alert(c);
@@ -148,7 +148,7 @@
 
         function w() {
             0 === c.naturalWidth ? v.clearRect(0, 0, v.canvas.width, v.canvas.height) : v.drawImage(c, 0, 0, c.width, c.height, 0, 0, i.width, i.height);
-            for (var e = 0; e < y.length; e++) v.strokeStyle = e ? "rgba(0, 255, 0, 1)" : "rgba(255, 0, 0, 1)", v.beginPath(), v.moveTo(y[e].x1, y[e].y1), v.lineTo(y[e].x2, y[e].y2), v.stroke()
+            for (var e = 0; e < y.length; e++) v.strokeStyle = e ? "rgba(0, 255, 0, 1)" : "rgba(0, 255, 0, 1)", v.beginPath(), v.moveTo(y[e].x1, y[e].y1), v.lineTo(y[e].x2, y[e].y2), v.stroke()
         }
 
         function x() {
@@ -167,14 +167,15 @@
                 console.log('r158', r);
             if (y.length) {
 //                r = 1 / Math.sqrt(Math.pow(y[0].x1 - y[0].x2, 2) + Math.pow(y[0].y1 - y[0].y2, 2)) * a, m.innerHTML = "";
-                  r = 1, m.innerHTML = ""; //скільки сантиметрів в одному пікселі
+                  r = 0.42, m.innerHTML = ""; //скільки сантиметрів в одному пікселі
                 console.log('r1162', r)
                 for (var o = document.createElement("table"), i = 0; i < y.length; i++) {
+                o.className="table table-hover";
                     var d, l = o.insertRow(),
                         s = l.insertCell();
                         console.log('d166', d);
-                    s.appendChild(document.createTextNode(i + 1)), r ? d = Math.sqrt(Math.pow(y[i].x1 - y[i].x2, 2) + Math.pow(y[i].y1 - y[i].y2, 2)) * r : (d = Math.sqrt(Math.pow(y[i].x1 - y[i].x2, 2) + Math.pow(y[i].y1 - y[i].y2, 2)), n = " px"), (s = l.insertCell()).appendChild(document.createTextNode(d.toFixed(2) + n)), v.font = "20px serif", v.textAlign = "center", v.textBaseline = "middle";
-                    var c = i + 1 + "=" + d.toFixed(2) + n;
+                    s.appendChild(document.createTextNode(i + 1)), r ? d = Math.sqrt(Math.pow(y[i].x1 - y[i].x2, 2) + Math.pow(y[i].y1 - y[i].y2, 2)) * r : (d = Math.sqrt(Math.pow(y[i].x1 - y[i].x2, 2) + Math.pow(y[i].y1 - y[i].y2, 2)), n = " mm"), (s = l.insertCell()).appendChild(document.createTextNode(d.toFixed(2) + n)), v.font = "20px serif", v.textAlign = "center", v.textBaseline = "middle";
+                    var c = i + 1 + "=" + d.toFixed(2) + n + " mm";
                     v.strokeStyle = "rgba(255, 255, 255, 0.5)", v.strokeText(c, Math.min(y[i].x1, y[i].x2) + Math.abs(y[i].x1 - y[i].x2) / 2, Math.min(y[i].y1, y[i].y2) + Math.abs(y[i].y1 - y[i].y2) / 2), v.fillStyle = "rgba(0, 0, 0, 1)", v.fillText(c, Math.min(y[i].x1, y[i].x2) + Math.abs(y[i].x1 - y[i].x2) / 2, Math.min(y[i].y1, y[i].y2) + Math.abs(y[i].y1 - y[i].y2) / 2), s = l.insertCell();
                     var u = document.createElement("a"),
                         p = document.createTextNode("remove");
@@ -186,10 +187,13 @@
                     }(i), s.appendChild(u)
                 }
                 var h = o.createTHead().insertRow(),
-                    g = document.createTextNode("#"),
+                    g = document.createTextNode("№"),
                     f = document.createElement("th");
+                    h.className = "table-primary";
+                    m.className="table-light";
 
-                f.appendChild(g), h.appendChild(f), g = document.createTextNode("length"), (f = document.createElement("th")).appendChild(g), h.appendChild(f), g = document.createTextNode("-"), (f = document.createElement("th")).appendChild(g), h.appendChild(f), m.appendChild(o)
+
+                f.appendChild(g), h.appendChild(f), g = document.createTextNode("length, mm"), (f = document.createElement("th")).appendChild(g), h.appendChild(f), g = document.createTextNode("-"), (f = document.createElement("th")).appendChild(g), h.appendChild(f), m.appendChild(o)
             } else m.innerHTML = ""
         }
 
@@ -211,7 +215,7 @@
                 n = e.clientY - o.top,
                 a = v.getImageData(t, n, 1, 1).data,
                 r = "rgba(" + a[0] + "," + a[1] + "," + a[2] + "," + a[3] + ")";
-            p(t.toFixed(), n.toFixed(), r), d && (e.stopPropagation(), e.preventDefault(), w(), y.length ? v.strokeStyle = "rgba(0, 255, 0, 1)" : v.strokeStyle = "rgba(255, 0, 0, 1)", v.beginPath(), v.moveTo(l, s), u && (Math.abs(l - t) <= 10 ? t = l : Math.abs(s - n) <= 10 && (n = s)), v.lineTo(t, n), v.stroke(), v.strokeStyle = "rgba(127, 127, 127, 0.5)", v.beginPath(), v.arc(l + (t - l) / 2, s + (n - s) / 2, Math.sqrt(Math.pow(Math.abs(l - t), 2) + Math.pow(Math.abs(s - n), 2)) / 2, 0, 2 * Math.PI), v.stroke())
+            p(t.toFixed(), n.toFixed(), r), d && (e.stopPropagation(), e.preventDefault(), w(), y.length ? v.strokeStyle = "rgba(0, 255, 0, 1)" : v.strokeStyle = "rgba(0, 255, 0, 1)", v.beginPath(), v.moveTo(l, s), u && (Math.abs(l - t) <= 10 ? t = l : Math.abs(s - n) <= 10 && (n = s)), v.lineTo(t, n), v.stroke(), v.strokeStyle = "rgba(127, 127, 127, 0.5)", v.beginPath(), v.arc(l + (t - l) / 2, s + (n - s) / 2, Math.sqrt(Math.pow(Math.abs(l - t), 2) + Math.pow(Math.abs(s - n), 2)) / 2, 0, 2 * Math.PI), v.stroke())
         }), i.addEventListener("mouseup", function(e) {
             if (0 != e.button) return !1;
             e.stopPropagation(), e.preventDefault(), i.oncontextmenu = null, d = !1;

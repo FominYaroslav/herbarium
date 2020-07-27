@@ -1,44 +1,12 @@
-<!DOCTYPE html>
+{% extends "index.html." %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="{%static "css/main.css" rel="stylesheet"%}" type="text/css" />
-    <link rel="stylesheet" href="{%static "css/style.css"%}" type="text/css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-    <!-- Подключаем jQuery (необходим для Bootstrap JavaScript) -->
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-    <!-- Bootstrap JavaScript -->
-<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>-->
-<!--    <script type="text/javascript" src="{%static "scripts/jquery.min.js"%}"></script>-->
 
+{% block title %}Collection {% endblock title %}
 
-    <title>Collection</title>
+{% block content %}
 
-
-
-</head>
-<body>
-
-
-<div class="page">
-            <div class="sidebar" >
-                    <a href="/index" id="logo"><img src="{%static "images/logo1111.png"%}" alt="logo"></a>
-                    <p>
-                        ...
-                    </p>
-                    <ul>
-                        <li class="selected">
-                           <a href="/">Back</a>
-                        </li>
-
-                    </ul>
-
-
-
-            </div>
-</div>
 {% if object_list %}
+
 {% load thumbnail %}
 
 <div class="container">
@@ -55,38 +23,45 @@
       <a href="{{ plant.scan.url }}" class="d-block mb-4 h-100">
             <img class="img-fluid img-thumbnail image_zoom" src="{{im.url }}" alt="">
           </a>
-
-        <a class="name_taxon" href="search/services/{{plant.barcode}}"><h2>{{plant.taxon}}</h2>
-
+        <a class="name_taxon" href="search/services/{{plant.barcode}}"><h2>{{plant.taxon}}</h2></a>
 
         {% endthumbnail %}
     </div>
       {% endfor %}
   </div>
-<!--СТрока с номераи страниц-->
-    <div style="margin-top:100px; ">
+</div>
+
+<div >
+  <ul class="pagination pagination-lg justify-content-center ">
+
     {% if page_obj.has_previous %}
-        <a class=" page_number " href="?page={{ page_obj.previous_page_number }} ">Previous</a>
-     {% endif %}
-     {%for i in page_obj.paginator.page_range %}
+      <li class="page-item">
+        <a class=" page-link " href="?page={{ page_obj.previous_page_number }} ">Previous</a>
+      </li>
+    {%endif %}
+    {%for i in page_obj.paginator.page_range %}
         {% if page_obj.number == i %}
-         <a  class="page_number active" >{{i}}</a>
+            <li class="page-item active">
+              <a class="page-link" >{{i}}</a>
+            </li>
         {% else %}
-        <a  class="page_number " href="?page={{ i }} ">{{i}}</a>
-        {%endif%}
-     {% endfor %}
-    {% if page_obj.has_next %}
-
-        <a class=" page_number" href="?page={{ page_obj.next_page_number }} ">Next</a>
+            <li class="page-item">
+        <a  class="page-link " href="?page={{ i }} ">{{i}}</a>
+            </li>
+        {%endif %}
+    {% endfor %}
+    {%if page_obj.has_next %}
+    <li class="page-item">
+        <a class=" page-link" href="?page={{ page_obj.next_page_number }} ">Next</a>
+    </li>
     {% endif %}
-    </div>
 
+  </ul>
 </div>
 
 
 {% else %}
-<h1>No result</h1>
+<h1>Oops, somethings is wrong</h1>
 {% endif %}
-</body>
 
-</html>
+{% endblock content %}

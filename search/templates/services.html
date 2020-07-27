@@ -1,94 +1,100 @@
-<!DOCTYPE html>
-{%load static %}
-<!-- Website template by freewebsitetemplates.com -->
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Virtual Herbarium</title>
-	<link rel="stylesheet" href="{%static 'css/style.css'%}" type="text/css">
-</head>
-<body>
-	<div class="border">
-		<div id="bg">
-			background
-		</div>
-		<div class="page">
-			<div class="sidebar">
-				<a href="/index" id="logo"><img src="{%static 'images/logo1111.png'%}" alt="logo"></a>
-				<ul>
-					<li>
-						<a href="/index">Home</a>
-					</li>
-					<li>
-						<a href="/search">Search</a>
-					</li>
+{% extends "index.html" %}
+{% load static %}
 
-					<li>
-						<a href="/collections">Collections</a>
-					</li>
-				
-				</ul>
-				<form action="index.html">
-					<span>Comenius University</span>
-					
-				</form>
-				
-			</div>
-			<div class="body">
-				<div class="services">
-					<h2>Herbarium sample</h2>
-					<ul class="navigation">
-						<li class="selected"></li>
-						<li>
-						<a href="services.html">Metadata</a>
-						</li>
-						<li>
-							<a href="/meassurement/{{plant.barcode}}">Distance</a>
-						</li>
-						<li>
-							<a href="/color_picker/{{plant.barcode}}">Color Meassurment</a>
-						</li>
-					</ul>
-					<ul>
-						<li>
-							<h3><span>A page which will open after searching an image</span></h3>
-							<h2>{{plant.taxon}}</h2>
-							<div>
-<!--								<img src="{{plant.scan.url}}" alt="скан вибраної рослини" width="400" height="700">-->
-								{% load thumbnail %}
-                            {% thumbnail plant.scan "290" as im %}
-                                 <a href="{{ plant.scan.url }}">
-                                    <img src="{{im.url }}" >
-                                 </a>
-                            {% endthumbnail %}
-							</div>
-							<p>	Here should be metadata from database.</p>
-							<h3>Name of plant: {{plant.taxon}}</h3>
-							<h3>Country: {{plant.country}}</h3>
+{%block static  %}
+<script>var crcr = '{{plant.scan.url}}' </script>
+<script type="text/javascript" src="{%static "js/color_picker.js"%}"></script>
+<script type="text/javascript" src="{%static "js/meassuring.js"%}"></script>
 
-							<!--<p>
-								This website template has been designed by <a href="http://www.freewebsitetemplates.com/">Free Website Templates</a> for you, for free. You can replace all this text with your own text.
-							</p>
-							<p>
-								You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
-							</p>
-							<p>
-								If you're having problems editing this website template, then don't hesitate to ask for help on the <a href="http://www.freewebsitetemplates.com/forums/">Forums</a>.
-							</p>-->
-						</li>
-						<li>
-							<!--
-							<h3><span>Web Design</span></h3>
-							<div>
-								<img src="images/web-design.jpg" alt="">
-							</div>
-							-->
-						</li>
-						
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
+{% endblock static %}
+
+{%block content %}
+<div class="container">
+    <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#metadata">Metadata</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#distance">Distansce measurement</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " data-toggle="tab"  href="#color_picker">Color measurement</a>
+  </li>
+  <li class="nav-item dropdown">
+
+  </li>
+</ul>
+    <div class = "row">
+
+    <div class="col-lg-5">
+
+<!--<ul class="nav nav-tabs">-->
+<!--  <li class="nav-item">-->
+<!--    <a class="nav-link active" data-toggle="tab" href="#metadata">Metadata</a>-->
+<!--  </li>-->
+<!--  <li class="nav-item">-->
+<!--    <a class="nav-link" data-toggle="tab" href="#distance">Distansce measurement</a>-->
+<!--  </li>-->
+<!--  <li class="nav-item">-->
+<!--    <a class="nav-link " data-toggle="tab"  href="#color_picker">Color measurement</a>-->
+<!--  </li>-->
+<!--  <li class="nav-item dropdown">-->
+
+<!--  </li>-->
+<!--</ul>-->
+
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade active show" id="metadata">
+	  <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header">Metadata</div>
+  <div class="card-body">
+    <h4 class="card-title">Taxon:{{plant.taxon}}</h4>
+    <p class="card-text">Country: {{plant.country}}</p>
+	  {% if plant.locality %}
+    <p class="card-text">Locality: {{plant.locality}}</p>
+	  {%endif%}
+	  <p class="card-text">Collector: {{plant.collector}}</p>
+	{% if plant.legend.author %}
+		<p class="card-text">Legend author: {{plant.legend_author}}</p>
+	{%endif%}
+    <p class="card-text">Year: {{plant.year}}</p>
+
+  </div>
+	  </div>
+
+  </div>
+  <div class="tab-pane fade" id="color_picker">
+        <div>Color</div>
+        <div id="preview"></div>
+        <div>Parameters</div>
+        <div>R: <input type="text" id="rVal" /></div>
+        <div>G: <input type="text" id="gVal" /></div>
+        <div>B: <input type="text" id="bVal" /></div>
+        <div>RGB: <input type="text" id="rgbVal" /></div>
+        <div>RGBA: <input type="text" id="rgbaVal" /></div>
+        <div>HEX: <input type="text" id="hexVal" /></div>
+  </div>
+
+  <div class="tab-pane fade" id="distance">
+       <input style="visibility:hidden;" id=ref value=1>
+
+            <div id=fileinfo></div>
+
+            <div id=info>x=- y=- -</div>
+            <input id=save type=button disabled value="Save as ...">
+            <h2>Measurements</h2>
+            <div id=output>None yet.</div>
+
+  </div>
+
+</div>
+
+</div>
+
+    <div class="col-lg-7">
+        <canvas id="panel" > </canvas>
+    </div>
+
+   </div>
+</div>
+{% endblock content %}
