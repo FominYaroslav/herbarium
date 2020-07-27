@@ -1,55 +1,12 @@
-<!DOCTYPE html>
+{% extends "index.html" %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="{%static "css/main.css" rel="stylesheet"%}" type="text/css" />
-    <link rel="stylesheet" href="{%static "css/style.css"%}" type="text/css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-    <!-- Подключаем jQuery (необходим для Bootstrap JavaScript) -->
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-    <!-- Bootstrap JavaScript -->
-<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>-->
-    <title>Search result</title>
-</head>
-<body>
+{%block title %}Search result{%endblock title %}
 
-
-<div class="page">
-            <div class="sidebar">
-                    <a href="/index" id="logo"><img src="{%static "images/logo1111.png"%}" alt="logo"></a>
-                    <p>
-                        ...
-                    </p>
-                    <ul>
-                        <li class="selected">
-                           <a href="/search">Back</a>
-                        </li>
-
-                    </ul>
-
-
-
-            </div>
-</div>
+{% block content %}
 {% if object_list %}
 {% load thumbnail %}
 
-<!--                            {% for plant in object_list %}-->
-<!--                        -->
-<!--                            {% thumbnail plant.scan "200" as im %}-->
-<!--                                 <a href="{{ plant.scan.url }}">-->
-<!--                                    <img src="{{im.url }}" class="image_zoom">-->
-<!--                                 </a>-->
-<!--                            {% endthumbnail %}-->
 
-<!--                            <a href="/scans/{{plant.scan}}" >Full</a>-->
-<!--                            <a href="services/{{plant.barcode}}">services {{plant.barcode}}</a>-->
-<!--&lt;!&ndash;                            <img src="{%static '{{plant.scan}}%'}" alt="logo">&ndash;&gt;-->
-<!--&lt;!&ndash;                            {{plant.scan}}&ndash;&gt;-->
-<!--                        </div>-->
-
-<!--                            {% endfor %}-->
 <div class="container">
 
   <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Result</h1>
@@ -75,26 +32,42 @@
 
 </div>
  {% if page_obj.has_next or page_obj.has_previous %}
-<div class="div-page_number" style="margin-top:100px; text-align: center ">
+
+<div class="">
+  <ul class="pagination pagination-lg justify-content-center ">
+
     {% if page_obj.has_previous %}
-        <a class=" page_number " href="?page={{ page_obj.previous_page_number }}{% for key, value in request.GET.items%}{%ifnotequal key 'page'%}&{{key}}={{value}}{%endifnotequal%}{%endfor%} ">Previous</a>
-     {% endif %}
-     {%for i in page_obj.paginator.page_range %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% for key, value in request.GET.items%}{%ifnotequal key 'page'%}&{{key}}={{value}}{%endifnotequal%}{%endfor%}" >Previous</a>
+      </li>
+    {%endif %}
+    {%for i in page_obj.paginator.page_range %}
         {% if page_obj.number == i %}
-         <a  class="page_number active" >{{i}}</a>
+            <li class="page-item active">
+              <a class="page-link" href="#">{{i}}</a>
+            </li>
         {% else %}
-        <a  class="page_number " href="?page={{ i }}{% for key, value in request.GET.items%}{%ifnotequal key 'page'%}&{{key}}={{value}}{%endifnotequal%}{%endfor%} ">{{i}}</a>
-        {%endif%}
-     {% endfor %}
-        {%if page_obj.has_next %}
-        <a class=" page_number" href="?page={{ page_obj.next_page_number }}{% for key, value in request.GET.items%}{%ifnotequal key 'page'%}&{{key}}={{value}}{%endifnotequal%}{%endfor%}   ">Next</a>
-        {%endif%}
+            <li class="page-item">
+        <a  class="page-link " href="?page={{ i }}{% for key, value in request.GET.items%}{%ifnotequal key 'page'%}&{{key}}={{value}}{%endifnotequal%}{%endfor%} ">{{i}}</a>
+            </li>
+        {%endif %}
+    {% endfor %}
+    {%if page_obj.has_next %}
+    <li class="page-item">
+        <a class=" page-link" href="?page={{ page_obj.next_page_number }}{% for key, value in request.GET.items%}{%ifnotequal key 'page'%}&{{key}}={{value}}{%endifnotequal%}{%endfor%}   ">Next</a>
+    </li>
+    {% endif %}
 
+  </ul>
 </div>
-
 {%endif %}
+
 {% else %}
-<h1>No result</h1>
+<div class="alert alert-dismissible alert-warning">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+<!--  <h4 class="alert-heading">Warning!</h4>-->
+  <p class="mb-0">Unfortunately nothing was found for the specified search parameters.<br> <a href="/search" class="alert-link">Please, change search parementres and try again</a></br></p>
+</div>
 {% endif %}
-</body>
-</html>
+
+{% endblock content %}

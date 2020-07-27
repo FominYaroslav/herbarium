@@ -1,55 +1,76 @@
-<!DOCTYPE html>
+{% extends "index.html" %}
 {% load static %}
-<html lang="ru" >
-    <head>
-        <meta charset="utf-8" />
-        <title>Virtual Herbarium</title>
-        <script>var crcr = '{{plant.scan.url}}' </script>
-        <link href="{%static "css/main.css" rel="stylesheet"%}" type="text/css" />
-        <link rel="stylesheet" href="{%static "css/style.css"%}" type="text/css">
-        <script type="text/javascript" src="{%static "js/jquery-1.5.2.min.js"%}"></script>
-        <script type="text/javascript" src="{%static "js/script.js"%}"></script>
 
-    </head>
-    <body>
-            
-            <div class="page">
-            <div class="sidebar">
-                    <a href="/index" id="logo"><img src="{%static "images/logo1111.png"%}" alt="logo"></a>
-                    <p>
-                        ...
-                    </p>
-                    <ul>
-                        <li class="selected">
-                           <a href="/search/services/{{plant.barcode}}">Back</a>
-                        </li>
-                        
-                    </ul>
-                    
-                </div>
-        <div class="container">
-            <div class="column1">
-                <canvas id="panel" width="1200" height="1400">
+{%block static  %}
+<script>var crcr = '{{plant.scan.url}}' </script>
+<script type="text/javascript" src="{%static "js/color_picker.js"%}"></script>
+<script type="text/javascript" src="{%static "js/meassuring.js"%}"></script>
 
-                </canvas>
-            </div>
-            <div class="column2" style = " position: fixed;">
+{% endblock static %}
 
-<!--                <div><input type="button" value="Другое изображение" id="swImage" /></div>-->
+{%block content %}
+<div class="container">
+    <div class = "row">
 
-                <div>Color</div>
-                <div id="preview"></div>
-                <div>Parameters</div>
-                <div>R: <input type="text" id="rVal" /></div>
-                <div>G: <input type="text" id="gVal" /></div>
-                <div>B: <input type="text" id="bVal" /></div>
-                <div>RGB: <input type="text" id="rgbVal" /></div>
-                <div>RGBA: <input type="text" id="rgbaVal" /></div>
-                <div>HEX: <input type="text" id="hexVal" /></div>
-               
-            </div>
-            <div style="clear:both;"></div>
-        </div>
-            </div>
-    </body>
-</html>
+    <div class="col-lg-5">
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#metadata">Metadata</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#distance">Distansce measurement</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " data-toggle="tab"  href="#color_picker">Color measurement</a>
+  </li>
+  <li class="nav-item dropdown">
+
+  </li>
+</ul>
+
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade active show" id="metadata">
+	  <h2>{{plant.taxon}}</h2>
+	<div>
+	</div>
+	<p>	Here should be metadata from database.</p>
+	<h3>Name of plant: {{plant.taxon}}</h3>
+	<h3>Country: {{plant.country}}</h3>
+
+  </div>
+  <div class="tab-pane fade" id="color_picker">
+        <div>Color</div>
+        <div id="preview"></div>
+        <div>Parameters</div>
+        <div>R: <input type="text" id="rVal" /></div>
+        <div>G: <input type="text" id="gVal" /></div>
+        <div>B: <input type="text" id="bVal" /></div>
+        <div>RGB: <input type="text" id="rgbVal" /></div>
+        <div>RGBA: <input type="text" id="rgbaVal" /></div>
+        <div>HEX: <input type="text" id="hexVal" /></div>
+  </div>
+
+  <div class="tab-pane fade" id="distance">
+       <input style="visibility:hidden;" id=ref value=1>
+
+            <div id=fileinfo></div>
+
+            <div id=info>x=- y=- -</div>
+            <input id=save type=button disabled value="Save as ...">
+            <h2>Measurements</h2>
+            <div id=output>None yet.</div>
+
+  </div>
+
+</div>
+
+</div>
+
+    <div class="col-lg-7">
+        <canvas id="panel" > </canvas>
+    </div>
+
+   </div>
+</div>
+{% endblock content %}

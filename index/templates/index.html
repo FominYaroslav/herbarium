@@ -1,99 +1,92 @@
 <!DOCTYPE html>
 {% load static %}
-<!-- Website template by freewebsitetemplates.com -->
+
 <html>
 
 <head>
 
-<!--	<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}" />-->
+	<link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}"/>
 	<link rel="stylesheet" href="{% static "css/style.css" %}"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{%static "js/bootstrap.min.js"%}"></script>
+{%block static %}
+
+<script type="text/javascript" src="{%static "scripts/jquery.innerfade.js"%}"></script>
+
+{%endblock%}
 
 	<meta charset="UTF-8">
-	<title>Virtual Herbarium</title>
-	<!--<link rel="stylesheet" href="css/style.css" type="text/css">  -->
-	
-<script type="text/javascript" src="{%static "scripts/jquery.min.js"%}"></script>
-<script type="text/javascript" src="{%static "scripts/jquery.innerfade.js"%}"></script>
+	<title>{%block title %} Virtual Herbarium {%endblock%}</title>
+
+
 </head>
+
 <body>
-	<div class="border">
-		<div id="bg">
-			background
-		</div>
-		<div class="page">
-			<div class="sidebar">
-				<a href="index" id="logo"></a><img src="{% static "images/logo111.png" %}" alt="logo"></a>
-				<ul>
-					<li class="selected">
-						<a href="index">Home</a>
-					</li>
-					<li>
-						<a href="search">Search</a>
-					</li>
+{% block navigation%}
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+	  <div class="collapse navbar-collapse" id="navbarColor02">
 
-					<li>
-						<a href="/collections">Collection</a>
-					</li>
-					
-				</ul>
-				<form action="about.html">
-					<span>Commenius University</span>
-					<p>Virtual Herbarium Collection</p>
+	  <a href="/index" id="logo"></a><img weight="50px" height="50px" class="navbar-brand nav-link" href='/index' src="{% static "images/logo1111.png" %}" alt="logo"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+		<ul class="navbar-nav mr-auto">
+		  <li class="nav-item ">
+			<a class="nav-link" href="/index">Home </a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" <a href="/search">Search</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" <a href="/collections">Collection</a>
+		  </li>
 
-				</form>
+            <li class="nav-item offset-md-10"  >
+                <a style="" type="button" class="btn btn-secondary my-2 my-sm-2   "  href="javascript:history.back()" onMouseOver="window.status="Back";return true">Back</a>
+		  </li>
 
-				
+		</ul>
 
-			</div>
-			<div class="body">
-				<div>
-					<h2>Virtual Herbarium</h2>
-					<p>
-						Comenius University
+	  </div>
+	</nav>
+{%endblock navigation %}
 
-					</p>
+{% block content %}
+<!--<h2>Virtual Herbarium</h2>-->
+<div class="container">
+<div class="row">
+	<div class="fl_left col-md-6 flex-centre">
+		<h1>Welcome to Virtual Herbarium! </h1>
+		<h2>What you can find here</h2>
 
-					<div class="fl_left">
-							<h1>What you can find here</h1>
-							<ul>
-							  <li>
-								<h2>1.1
-								</h2>
-								<p>This is an online storage of herbarium samples of Natural Faculty in Bratislava, offering:</p>
-								<p>search of plants by name, species, keywords; </p>
-								<p>distance meassurment of herbarium particles;</p>
-								<p>color picker. </p>
+		<p>Here You may find herbaria samples from a big collection of Department of Botany, Natural faculty, Comenius university.
+		Besides the searching of herbaria the following options are available on the website:</p>
+		<p>-color measurement; </p>
+		<p>- distance measurement.</p>
+		<p>Our goal is to make the access to the cultural heritage easier and to simplify the process of plant research. </p>
 
-							  </li>
+	  </div>
 
-						  </div>
-					<div class="fl_right">
+	<div class="fl_right col-md-6">
+{% load thumbnail %}
+	  <ul id="rotation">
+			{% load thumbnail %}
 
-							<ul id="rotation">
-								{% load thumbnail %}
+			{% for plant in plants %}
+					 {% thumbnail plant.scan "350" as im %}
+								 <a target="_blank" href="  {{ plant.scan.url }}">
+								<img class="magege" src="{{im.url }}" >
+								 </a>
+					 {% endthumbnail %}
 
-								{% for plant in plants %}
-										 {% thumbnail plant.scan "400" as im %}
-                                					 <a href="{{ plant.scan.url }}">
-                                    				<img src="{{im.url }}" >
-                                					 </a>
-                            {% endthumbnail %}
+			{%endfor %}
 
-								{%endfor %}
-
-
-
-							</ul>
-					</div>
-
-						</div>
+	  </ul>
+	  </div>
+</div>
+</div>
+{%endblock content %}
 
 
-
-
-				</div>
-			</div>
-		</div>
-	</div>
 </body>
 </html>
