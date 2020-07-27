@@ -41,13 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'index',
-    'color_picker',
     'search',
-    'distance_meassurement',
     'sorl.thumbnail',
     'rest_framework',
-    # 'rest_framework-xml',
-
 
 ]
 

@@ -12,7 +12,3 @@ class PlantsViewSet(viewsets.ModelViewSet):
     parser_classes = (XMLParser,)
     renderer_classes = (XMLRenderer,)
 
-
-
-
-# Create your views here.

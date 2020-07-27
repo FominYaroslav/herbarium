@@ -1,13 +1,15 @@
 from django.db import models
-import datetime
-from django.db.models.signals import post_save, pre_save
-from django.dispatch import receiver
 
-countries = (('Slovensko','Slovakia'),('Cesko','Czechia'),('Rakusko','Austria'),('Polsko', 'Poland'))
+countries = (
+    ("Slovensko", "Slovakia"),
+    ("Cesko", "Czechia"),
+    ("Rakusko", "Austria"),
+    ("Polsko", "Poland"),
+)
 
 
 class Plant(models.Model):
-    barcode = models.CharField(max_length=15,  primary_key=True)
+    barcode = models.CharField(max_length=15, primary_key=True)
     taxon = models.CharField(max_length=30)
     locality = models.CharField(max_length=40)
     country = models.CharField(max_length=30, choices=countries, default=countries[0])
@@ -17,14 +19,4 @@ class Plant(models.Model):
     scan = models.ImageField()
 
     def __str__(self):
-        return (self.taxon + ', barcode: ' + self.barcode)
-
-
-
-@receiver(post_save, sender = Plant, )
-def printer(instance, **kwargs):
-    print('\n {} has created'.format(str(instance)))
-    print(datetime.time())
-
-
-
+        return self.taxon + ", barcode: " + self.barcode
