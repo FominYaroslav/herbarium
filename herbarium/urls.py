@@ -13,41 +13,35 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path, re_path
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.conf import  settings
+from django.conf import settings
 from django.views.static import serve
-from django.views.generic import TemplateView, ListView
+from django.views.generic import ListView
 from rest_framework import routers
 from api import views
 from search import models
 
 router = routers.DefaultRouter()
-router.register(r'plants', views.PlantsViewSet)
+router.register(r"plants", views.PlantsViewSet)
 
 urlpatterns = [
-    path('api', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    # sdsd
-    re_path('collections', ListView.as_view(model=models.Plant, paginate_by = 12,template_name= 'collections.html')),
-    # re_path('collections', ListView.as_view()),
-
-    re_path('^index', include('index.urls')),
-    re_path('^color_picker/', include('color_picker.urls')) ,
-    re_path(r'^search/', include('search.urls')),
-    re_path(r'^meassurement/', include('distance_meassurement.urls')),
-
-    # url(r'^search_result', views.search.as_view(), name='search_result'),
-    # url(r'^search', views.home.as_view()),
-
-    path('admin/', admin.site.urls),
-    re_path('^$',include('index.urls'))
+    path("api", include(router.urls)),
+    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    re_path(
+        "collections",
+        ListView.as_view(
+            model=models.Plant, paginate_by=12, template_name="collections.html"
+        ),
+    ),
+    re_path("^index", include("index.urls")),
+    re_path(r"^search/", include("search.urls")),
+    path("admin/", admin.site.urls),
+    re_path("^$", include("index.urls")),
 ]
 
 if settings.DEBUG:
-    urlpatterns+=[url(r'^scans/(?P<path>.*)$',serve,{
-        'document_root': settings.MEDIA_ROOT,
-    }),]
-# оця фігня треба для роботи зображення
+    urlpatterns += [
+        url(r"^scans/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT, }),
+    ]

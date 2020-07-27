@@ -9,6 +9,12 @@
 	<link rel="stylesheet" href="{% static "css/style.css" %}"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript" src="{%static "js/bootstrap.min.js"%}"></script>
+	<script type="text/javascript">$(window).on('load', function () {
+    var $preloader = $('#p_prldr'),
+        $svg_anm   = $preloader.find('.svg_anm');
+    $svg_anm.fadeOut();
+    $preloader.delay(500).fadeOut('slow');
+});</script>
 {%block static %}
 
 <script type="text/javascript" src="{%static "scripts/jquery.innerfade.js"%}"></script>
@@ -21,12 +27,13 @@
 
 </head>
 
-<body>
+<div id="p_prldr"><div class="contpre"><image src="{% static "images/Load.gif" %}"></image></div></div>
+
 {% block navigation%}
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark ">
 	  <div class="collapse navbar-collapse" id="navbarColor02">
 
-	  <a href="/index" id="logo"></a><img weight="50px" height="50px" class="navbar-brand nav-link" href='/index' src="{% static "images/logo1111.png" %}" alt="logo"></a>
+	  <a href="/index" id="logo"><img weight="50px" height="50px" class="navbar-brand nav-link" href='/index' src="{% static "images/logo1111.png" %}" alt="logo"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -39,10 +46,6 @@
 		  </li>
 		  <li class="nav-item">
 			<a class="nav-link" <a href="/collections">Collection</a>
-		  </li>
-
-            <li class="nav-item offset-md-10"  >
-                <a style="" type="button" class="btn btn-secondary my-2 my-sm-2   "  href="javascript:history.back()" onMouseOver="window.status="Back";return true">Back</a>
 		  </li>
 
 		</ul>
