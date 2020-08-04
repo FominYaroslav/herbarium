@@ -18,16 +18,18 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.views.static import serve
-from django.views.generic import ListView
+from django.views.generic import ListView, RedirectView
 from rest_framework import routers
 from api import views
 from search import models
 
 router = routers.DefaultRouter()
-router.register(r"plants", views.PlantsViewSet)
+router.register(r"", views.PlantsViewSet)
 
 urlpatterns = [
-    path("api", include(router.urls)),
+    path("api/data/", include(router.urls)),
+    path("api/data_test/<str:barcode>/", views.get_data),
+    path("api/src/<str:barcode>/", views.get_src),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     re_path(
         "collections",
@@ -39,9 +41,11 @@ urlpatterns = [
     re_path(r"^search/", include("search.urls")),
     path("admin/", admin.site.urls),
     re_path("^$", include("index.urls")),
+    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/images/favicon.ico', permanent=True))
 ]
 
-if settings.DEBUG:
-    urlpatterns += [
-        url(r"^scans/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT, }),
-    ]
+# if settings.DEBUG:
+urlpatterns += [
+    url(r"^scans/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT, }),
+    # url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
+]
