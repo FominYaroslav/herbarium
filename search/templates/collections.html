@@ -1,4 +1,4 @@
-{% extends "index.html." %}
+{% extends "index.html" %}
 {% load static %}
 
 {% block title %}Collection {% endblock title %}
@@ -20,10 +20,10 @@
 
     <div class="col-lg-3 col-md-4 col-6 ">
         {% thumbnail plant.scan "200" as im %}
-      <a href="{{ plant.scan.url }}" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail image_zoom" src="{{im.url }}" alt="">
+      <a target="_blank"  href="{{ plant.scan.url }}" class="d-block mb-4 h-100">
+            <img title="Click for open full image" class="img-fluid img-thumbnail image_zoom" src="{{im.url }}" alt="">
           </a>
-        <a class="name_taxon" href="search/services/{{plant.barcode}}"><h2>{{plant.taxon}}</h2></a>
+        <a  class="name_taxon" href="search/services/{{plant.barcode}}"><h2>{{plant.taxon}}</h2></a>
 
         {% endthumbnail %}
     </div>

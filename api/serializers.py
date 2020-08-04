@@ -8,7 +8,6 @@ class PlantSerializer(serializers.BaseSerializer):
             'title': instance.taxon,
             'country': instance.get_country_display(),
             'year': instance.year,
-            'test': 'testik',
+	    'scan': '/scans/' + instance.scan.name,
             'type': 'flora',
-
         }
