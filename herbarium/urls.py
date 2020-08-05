@@ -27,8 +27,8 @@ router = routers.DefaultRouter()
 router.register(r"", views.PlantsViewSet)
 
 urlpatterns = [
-    path("api/data/", include(router.urls)),
-    path("api/data_test/<str:barcode>/", views.get_data),
+    path("api/data/<str:barcode>/", views.get_data),
+    path("api/list/", views.get_list),
     path("api/src/<str:barcode>/", views.get_src),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     re_path(

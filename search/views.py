@@ -23,7 +23,7 @@ class search(ListView):
             Q(country__icontains=country_get)
             & Q(taxon__icontains=taxon_get)
             & Q(barcode__icontains=barcode_get)
-            & (Q(collector__icontains=collector_get) | Q(legend_author=collector_get))
+            & (Q(collector__icontains=collector_get) | Q(legend_author__icontains=collector_get))
             & Q(locality__icontains=locality_get)
             & Q(year__icontains=year_get)
         )

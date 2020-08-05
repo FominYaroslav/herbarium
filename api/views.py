@@ -7,7 +7,7 @@ from rest_framework_xml.parsers import XMLParser
 from django.http import HttpResponseRedirect, HttpResponse
 from dicttoxml import dicttoxml
 from lxml.etree import Element, SubElement, QName, tostring
-
+import json
 
 class XMLNamespaces:
     dc = "http://purl.org/dc/elements/1.1/"
@@ -28,6 +28,16 @@ class PlantsViewSet(viewsets.ModelViewSet):
     serializer_class = PlantSerializer
     parser_classes = (XMLParser,)
     renderer_classes = (XMLRenderer,)
+
+
+def get_list(request):
+    response = {
+        "barcodes": []
+    }
+
+    for plant in Plant.objects.all():
+        response["barcodes"].append(plant.barcode)
+    return HttpResponse(json.dumps(response), content_type="application/json")
 
 
 def get_src(request, barcode):

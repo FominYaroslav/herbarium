@@ -5,6 +5,7 @@ countries = (
     ("Cesko", "Czechia"),
     ("Rakusko", "Austria"),
     ("Polsko", "Poland"),
+    ("Nemecko", "Germany"),
 )
 
 
