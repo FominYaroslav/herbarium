@@ -2,7 +2,7 @@ asgiref==3.2.7
 Django==2.2
 django-deepzoom==3.0.3
 django-iipimage==1.0
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 Pillow==7.1.2
 pytz==2020.1
 six==1.14.0
