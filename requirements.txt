@@ -1,5 +1,5 @@
 asgiref==3.2.7
-Django==2.2
+Django==2.2.22
 django-deepzoom==3.0.3
 django-iipimage==1.0
 djangorestframework==3.11.0
